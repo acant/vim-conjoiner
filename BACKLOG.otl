@@ -1,0 +1,29 @@
+Backlog
+	[X] write the initial plugin with basic functionality
+	[_] add some documentation to the README
+	[_] add some spec tests
+		http://www.vimninjas.com/2014/02/18/testing-vim-plugins-with-vimrunner-and-rspec/
+Icebox
+	GTD commands for opening individual files
+		but also investigate for open all files at once
+	screen splitting commands
+	get wiki navigation stuff working
+		make consist of documentation of other plugins to install
+		http://albertomiorin.com/blog/2013/03/25/the-zen-of-wiki-with-gollum/
+	create a command for adding the timestamp and open for adding an item
+	consider changing plan to goals
+		still not confident about this
+		would the support material then be 'goal_supports'?
+	change gtd to state
+		to make it a bit more general
+	create a command to extract details from a plan to ~/work
+		;mkdir ~/work/plan_name
+		;git init
+		setup the appropriate remote
+		copy the existing plan to index.otl
+		and remove any details from the plan.otl
+		commit and attempt to push the changes to the remote
+	add a shortcut to open the current month directory
+	add more date options
+		last - which jumps to the last existing notes
+		yesterday - open yesterdays date
