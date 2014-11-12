@@ -1,0 +1,51 @@
+*conjoiner.txt*  Commands for managing conjoiner text files
+*conjoiner*
+
+Author: Andrew Sullivan Cant <http://andrewcant.ca>
+License: GPLv3 <http://www.gnu.org/licenses/gpl.html>
+
+CONTENTS                                                *conjoiner-contents*
+
+   01. Intro ............................................. |conjoiner-intro|
+   02. Commands ....................................... |conjoiner-commands|
+   03. Configuration ............................. |conjoiner-configuration|
+
+==============================================================================
+INTRODUCTION                                               *conjoiner-intro*
+
+Read and write conjoiner managed notes. (e.g., journal files)
+
+Notes will be divided into "aspects" which can be loaded separately on
+different computers. Some examples "aspects" could be:
+  home
+  acme_corp
+  old_job
+
+Which separates the notes which are related to different aspects of your life.
+
+By default the "home" aspect is defined. See |conjoiner-configuration| to add
+more aspects.
+
+==============================================================================
+COMMANDS                                                *conjoiner-commands*
+
+For all commands these [aspect] or [date] can be omitted, and the default
+aspect (e.g. home) and the current date will be used.
+                                                        *conjoiner-:Journal
+:Journal [aspect] [date]     Open a journal file for the specified date.
+
+                                                        *conjoiner-:Inbox
+:Inbox [aspect] [date]       Open an inbox file for the specified date.
+
+
+==============================================================================
+CONFIGURATION                                      *conjoiner-configuration*
+
+If you would like to use additonal aspects you can override the aspect list
+with:
+
+  let g:conjoiner_aspects = ["home", "work"]
+
+And if you can set the default aspect for the commands to use:
+
+  let g:conjoiner_default_aspect = "work"

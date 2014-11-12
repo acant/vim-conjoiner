@@ -3,6 +3,8 @@ vim-conjoiner
 
 Vim plugin for accessing conjoiner managed notes
 
+Please see [conjoiner.txt](/doc/conjoiner.txt) for commands and configuration details.
+
 Research and Related Links
 ==========================
 * [VimOutilner](http://www.vimoutliner.org/)
