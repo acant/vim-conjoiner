@@ -2,6 +2,11 @@ Backlog
 	[X] write the initial plugin with basic functionality
 	[X] add some documentation to the README
 	[_] add command for open each type of GTD file
+		consider making this into commands for modes
+		working
+			only have next action open
+		reviewing
+			have next action, waiting and plan open
 	[_] add OTL extensions to notes files
 		do not want to convert old files, so will have to account for this
 		http://stackoverflow.com/questions/3098521/vimscript-how-to-detect-if-specific-file-exists
