@@ -63,7 +63,7 @@ function! s:open_log(...)
 endfunction
 
 function! s:log_setup()
-  setfiletype vo_base
+  setfiletype votl
 endfunction
 
 function! s:is_aspect(aspect_string)
