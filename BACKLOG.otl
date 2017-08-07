@@ -1,12 +1,6 @@
 Backlog
 	[X] write the initial plugin with basic functionality
 	[X] add some documentation to the README
-	[_] add command for open each type of GTD file
-		consider making this into commands for modes
-		working
-			only have next action open
-		reviewing
-			have next action, waiting and plan open
 	[_] add OTL extensions to notes files
 		do not want to convert old files, so will have to account for this
 		http://stackoverflow.com/questions/3098521/vimscript-how-to-detect-if-specific-file-exists
@@ -15,9 +9,24 @@ Backlog
 		otherwise open a log with an otl extension
 		need work on GTD stuff tonight
 		also need to sort out stuff for travelling tomorrow
-	[_] add command for opening a session
+	[_] add command for open each type of GTD file
+		consider making this into commands for modes
+		working
+			only have next action open
+		reviewing
+			have next action, waiting and plan open
+	[_] add command for easily opening check lists
+		daily/weekly reviews specifically
+	[_] add command to copy next action into the journal
+		remove the checkbox
+		add current timestamp at the beginning of the line
 	[_] add some spec tests
 		http://www.vimninjas.com/2014/02/18/testing-vim-plugins-with-vimrunner-and-rspec/
+	[_] add commands for GTD modes
+		e.g., inbox review,
+		working through next actions,
+		generation new next actions
+	[_] improve vim tab completion on @contacts p:projects
 Icebox
 	GTD commands for opening individual files
 		but also investigate for open all files at once
@@ -38,6 +47,8 @@ Icebox
 		copy the existing plan to index.otl
 		and remove any details from the plan.otl
 		commit and attempt to push the changes to the remote
+		add the repo into gitdocs management
+		create a method for automatically cleaning up finished plans/projects
 	add a shortcut to open the current month directory
 	add more date options
 		last - which jumps to the last existing notes
