@@ -75,8 +75,16 @@ function! s:is_aspect(aspect_string)
   return 0
 endfunction
 
+function! s:read_checklist(type)
+  let path = $HOME . "/gtd/" . g:conjoiner_default_aspect . "/checklists/" . a:type . ".otl"
+  exec "read " . path
+endfunction
+
 "- Setup commands --------------------------------------------------------------
 command! -nargs=* Journal :call s:open_log("journal", <f-args>)
 command! -nargs=* Inbox   :call s:open_log("inbox", <f-args>)
+" TODO: Consider limiting these commands to only run in Journal files.
+command! -nargs=0 Daily   :call s:read_checklist("daily_review")
+command! -nargs=0 Weekly  :call s:read_checklist("weekly_review")
 
 autocmd BufRead,BufNewFile ~/reference/log/*/{inbox,journal} :call s:log_setup()

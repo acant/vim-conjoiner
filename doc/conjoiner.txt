@@ -36,6 +36,11 @@ aspect (e.g. home) and the current date will be used.
 
                                                         *conjoiner-:Inbox
 :Inbox [aspect] [date]       Open an inbox file for the specified date.
+                                                        *conjoiner-:Daily
+:Daily                       Read the daily review checklist into the current file.
+
+                                                        *conjoiner-:Weekly
+:Weekly                      Read the weekly review checklist into the current file.
 
 
 ==============================================================================
