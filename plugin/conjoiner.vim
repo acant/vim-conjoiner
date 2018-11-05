@@ -10,10 +10,10 @@ if !exists("g:conjoiner_base_path")
   let g:conjoiner_base_path      = $HOME . "/reference/log/"
 endif
 if !exists("g:conjoiner_default_aspect")
-  let g:conjoiner_default_aspect = "home"
+  let g:conjoiner_default_aspect = "prime"
 endif
 if !exists("g:conjoiner_aspects")
-  let g:conjoiner_aspects        = ["home"]
+  let g:conjoiner_aspects        = ["prime"]
 endif
 
 function! s:open_log(...)
