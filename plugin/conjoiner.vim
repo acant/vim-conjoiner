@@ -80,11 +80,21 @@ function! s:read_checklist(type)
   exec "read " . path
 endfunction
 
+function! s:open_gtd(type)
+  let path = $HOME . "/gtd/" . g:conjoiner_default_aspect . "/" . a:type . ".otl"
+  execute "e " . path
+  " fnameescape(filename)
+  " exec "read " . path
+endfunction
+
 "- Setup commands --------------------------------------------------------------
 command! -nargs=* Journal :call s:open_log("journal", <f-args>)
 command! -nargs=* Inbox   :call s:open_log("inbox", <f-args>)
 " TODO: Consider limiting these commands to only run in Journal files.
 command! -nargs=0 Daily   :call s:read_checklist("daily_review")
 command! -nargs=0 Weekly  :call s:read_checklist("weekly_review")
+command! -nargs=0 NextAction :call s:open_gtd("next_actions")
+command! -nargs=0 WaitingFor :call s:open_gtd("waiting_for")
+command! -nargs=0 Plans :call s:open_gtd("plans")
 
 autocmd BufRead,BufNewFile ~/reference/log/*/{inbox,journal} :call s:log_setup()
