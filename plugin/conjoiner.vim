@@ -7,7 +7,7 @@ let g:loaded_conjoiner = 1
 
 function! s:conjoiner_aspect_root_path()
   if !exists("g:conjoiner_aspect_root_path")
-    let g:conjoiner_aspect_root_path = $HOME . "/reference/log/"
+    let g:conjoiner_aspect_root_path = $HOME . "/aspects/"
   endif
 
   return g:conjoiner_aspect_root_path
@@ -68,14 +68,16 @@ function! s:open_log(...)
     echoerr("'" . aspect . "' is not a valid aspect")
     return 0
   endif
+
   if match(date_string, '^\d\d\d\d-\d\d-\d\d$') != 0
     echoerr("'" . date_string . "' is not a valid date string")
     return 0
   endif
 
   " Ensure the path exists
-  let date_path = substitute(date_string, "-", "/", "g")
-  let path = s:conjoiner_aspect_root_path() . "/" . aspect . "/" . date_path
+  "let date_path = substitute(date_string, "-", "/", "g")
+  let date_parts = split(date_string, '-')
+  let path = s:conjoiner_aspect_root_path() . "/" . aspect . "/dated/" . date_parts[0] . '/log/' . date_parts[1] . '/' . date_parts[2]
   if !isdirectory(path)
     call mkdir(path, "p")
   endif
@@ -121,4 +123,4 @@ command! -nargs=0 NextAction :call s:open_gtd("next_actions")
 command! -nargs=0 WaitingFor :call s:open_gtd("waiting_for")
 command! -nargs=0 Plans :call s:open_gtd("plans")
 
-autocmd BufRead,BufNewFile ~/reference/log/*/{inbox,journal} :call s:log_setup()
+autocmd BufRead,BufNewFile ~/aspects/*/dated/**/{inbox,journal} :call s:log_setup()
