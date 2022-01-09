@@ -16,6 +16,11 @@ endfunction
 function! s:conjoiner_default_aspect()
   if !exists("g:conjoiner_default_aspect")
     let g:conjoiner_default_aspect = "prime"
+
+    let filename = $HOME . "/.config/conjoiner/default_aspect"
+    if filereadable(filename)
+      let g:conjoiner_default_aspect = readfile(filename, "", 1)[0]
+    endif
   endif
 
   return g:conjoiner_default_aspect
@@ -23,7 +28,12 @@ endfunction
 
 function! s:conjoiner_aspects()
   if !exists("g:conjoiner_aspects")
-    let g:conjoiner_aspects = ["prime"]
+    let g:conjoiner_aspects = [s:conjoiner_default_aspect()]
+
+    let filename = $HOME . "/.config/conjoiner/aspects"
+    if filereadable(filename)
+      let g:conjoiner_aspects = readfile(filename)
+    endif
   endif
 
   return g:conjoiner_aspects
