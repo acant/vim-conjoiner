@@ -5,16 +5,29 @@ if exists("g:loaded_conjoiner") || &cp
 endif
 let g:loaded_conjoiner = 1
 
-" Set defaults.
-if !exists("g:conjoiner_base_path")
-  let g:conjoiner_base_path      = $HOME . "/reference/log/"
-endif
-if !exists("g:conjoiner_default_aspect")
-  let g:conjoiner_default_aspect = "prime"
-endif
-if !exists("g:conjoiner_aspects")
-  let g:conjoiner_aspects        = ["prime"]
-endif
+function! s:conjoiner_aspect_root_path()
+  if !exists("g:conjoiner_aspect_root_path")
+    let g:conjoiner_aspect_root_path = $HOME . "/reference/log/"
+  endif
+
+  return g:conjoiner_aspect_root_path
+endfunction
+
+function! s:conjoiner_default_aspect()
+  if !exists("g:conjoiner_default_aspect")
+    let g:conjoiner_default_aspect = "prime"
+  endif
+
+  return g:conjoiner_default_aspect
+endfunction
+
+function! s:conjoiner_aspects()
+  if !exists("g:conjoiner_aspects")
+    let g:conjoiner_aspects = ["prime"]
+  endif
+
+  return g:conjoiner_aspects
+endfunction
 
 function! s:open_log(...)
   " assert a:0 > 1
@@ -22,10 +35,11 @@ function! s:open_log(...)
   let log_type = a:1
   " assert log_type == 'journal' or 'inbox'
 
-  " Override aspect or date_string if they are present in the arguments.
-  let aspect      = g:conjoiner_default_aspect
+  " Set the defaults for the aspect and date_string.
+  let aspect      = s:conjoiner_default_aspect()
   let date_string = strftime("%Y-%m-%d") " today
 
+  " Override aspect or date_string if they are present in the arguments.
   if a:0 == 2
     if s:is_aspect(a:2)
       let aspect      = a:2
@@ -51,7 +65,7 @@ function! s:open_log(...)
 
   " Ensure the path exists
   let date_path = substitute(date_string, "-", "/", "g")
-  let path = g:conjoiner_base_path . "/" . aspect . "/" . date_path
+  let path = s:conjoiner_aspect_root_path() . "/" . aspect . "/" . date_path
   if !isdirectory(path)
     call mkdir(path, "p")
   endif
@@ -67,7 +81,7 @@ function! s:log_setup()
 endfunction
 
 function! s:is_aspect(aspect_string)
-  for aspect in g:conjoiner_aspects
+  for aspect in s:conjoiner_aspects()
     if aspect == a:aspect_string
       return 1
     endif
@@ -76,12 +90,12 @@ function! s:is_aspect(aspect_string)
 endfunction
 
 function! s:read_checklist(type)
-  let path = $HOME . "/gtd/" . g:conjoiner_default_aspect . "/checklists/" . a:type . ".otl"
+  let path = $HOME . "/gtd/" . s:conjoiner_default_aspect() . "/checklists/" . a:type . ".otl"
   exec "read " . path
 endfunction
 
 function! s:open_gtd(type)
-  let path = $HOME . "/gtd/" . g:conjoiner_default_aspect . "/" . a:type . ".otl"
+  let path = $HOME . "/gtd/" . s:conjoiner_default_aspect() . "/" . a:type . ".otl"
   execute "e " . path
   " fnameescape(filename)
   " exec "read " . path
